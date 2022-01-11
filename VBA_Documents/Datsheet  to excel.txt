@@ -1,0 +1,31 @@
+Install closedxml library
+DataGridView toolbox
+   
+
+Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Using sfd As SaveFileDialog = New SaveFileDialog() With {.Filter = "Excel Workbook|*.xlsx"}
+            If sfd.ShowDialog() = DialogResult.OK Then
+                Try
+                    Using workbook As XLWorkbook = New XLWorkbook()
+                        workbook.Worksheets.Add(Me.VBASQLPLCDataSet.MachineData1.CopyToDataTable(), "MachineData1")
+                        workbook.SaveAs(sfd.FileName)
+                    End Using
+                    MessageBox.Show("You successfully")
+                Catch ex As Exception
+                    MessageBox.Show("Error")
+                End Try
+            End If
+        End Using
+    End Sub
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+.......save default path..................
+workbook.SaveAs("D:\\dpqwe.xlsx")
+..........................................
+
+
+................save filepath..........
+My.Computer.FileSystem.WriteAllText("D:\\dp.csv", "" & TextBox1.Text, True)

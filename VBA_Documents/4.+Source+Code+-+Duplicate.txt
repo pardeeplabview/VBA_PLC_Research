@@ -1,0 +1,19 @@
+Source Code (Check Duplicate)
+--------------------------------------------------------
+
+Private Sub ChkDup() 
+	Dim strQuery As String 
+	Dim conDup As SqlConnection 
+	Dim cmdDup As SqlCommand 
+	Dim reader As SqlDataReader 
+	strQuery = "SELECT Emp_Name FROM Employee WHERE Emp_Name='" & txtName.Text.Trim & "'" 
+	conDup = New SqlConnection(strConString) 
+	cmdDup = New SqlCommand(strQuery, conDup) 
+	conDup.Open() 
+	reader = cmdDup.ExecuteReader() 
+	If reader.Read() Then 
+		isDup = True 
+	End If 
+	reader.Close() 
+	conDup.Close() 
+End Sub

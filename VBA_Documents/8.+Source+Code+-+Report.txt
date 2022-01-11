@@ -1,0 +1,22 @@
+Source Code (Create Report)
+-------------------------------------------------------- 
+Code behind the form "frmReport"
+-------------------------------------------------------- 
+
+Imports Microsoft.Reporting.WinForms
+
+Public Class frmReport 
+Private Sub frmReport_Load(sender As Object, e As EventArgs) Handles MyBase.Load 
+'
+'
+End Sub 
+
+Private Sub btnView_Click(sender As Object, e As EventArgs) Handles btnView.Click 
+	Me.EmployeeTableAdapter.Fill(Me.dsEmp.Employee) 
+	Dim rpDtStart As New ReportParameter("DateStart", dtpStart.Value.ToShortDateString()) 
+	Dim rpDtEnd As New ReportParameter("DateEnd", dtpEnd.Value.ToShortDateString()) 
+	Me.ReportViewer1.LocalReport.SetParameters(New ReportParameter() {rpDtStart, rpDtEnd}) 
+	Me.ReportViewer1.RefreshReport() 
+End Sub
+
+End Class

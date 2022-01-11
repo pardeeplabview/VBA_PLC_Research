@@ -1,0 +1,1165 @@
+****************************************** Color Property ***********************************
+    private void button1_Click(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.Red;
+            textBox1.Text = "Done";
+            textBox1.BackColor = Color.Green;
+            this.BackColor = Color.Yellow;
+	    this.Text = "Class 1";
+	    button1.Text = "Color";
+        }
+
+****************************************** Enable Disable Property **********************************************
+    private void button2_Click(object sender, EventArgs e)
+        {
+            panel1.Enabled = true;
+        }
+
+    private void button3_Click(object sender, EventArgs e)
+        {
+            panel1.Enabled = false;
+        }
+
+****************************************** Timer DateTime Property ***********************************************
+
+    private void timer1_Tick(object sender, EventArgs e)
+        {
+            textBox1.Text = DateTime.Now.ToString();
+        }
+
+****************************************** Advance Dialog Box Property *******************************************
+
+    private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Welcome to visit", "Deep", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+        }
+
+****************************************** Image Load from PC Property *******************************************
+
+    private void button1_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = Image.FromFile("D:\\plc.jpg");  
+        }
+
+****************************************** Conversion Strint to Int32 Property ***********************************
+
+     private void button1_Click(object sender, EventArgs e)
+        {
+            int a;
+            int b;
+            a = Convert.ToInt32(textBox1.Text);
+            b = Convert.ToInt32(textBox2.Text);
+            int c = a + b;
+            MessageBox.Show(c.ToString());
+        }
+
+****************************************** Int32 TryParse Property *********************************************
+
+
+    private void button1_Click(object sender, EventArgs e)
+        {
+            int a;
+            int b;
+            Int32.TryParse(textBox1.Text,out a);
+            Int32.TryParse(textBox2.Text,out b);
+            int c = a + b;
+            MessageBox.Show(c.ToString());
+        }
+
+****************************************** Run Application Calculator Property ***********************************
+ // drag "Process" from toolbox.
+     private void button1_Click(object sender, EventArgs e)
+        {
+            process1.StartInfo.FileName = ("C:\\Windows\\System32\\calc.exe");
+            process1.Start();
+        }
+
+
+****************************************** Close project Property ***********************************************
+
+     private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+****************************************** Age Calculation GUI Property ************************************************************
+
+
+      private void button1_Click(object sender, EventArgs e)
+        {
+            Int32 a;
+            Int32 b;
+            Int32.TryParse(textBox1.Text, out a);
+            Int32 currentage = DateTime.Now.Year;
+            Int32 result = currentage - a;
+            MessageBox.Show(result.ToString());
+        }
+
+****************************************** IF Condition Property ************************************************************
+
+     if (data1> 20)
+       {
+
+       }
+
+     else
+       {
+
+       }
+
+****************************************** For Loop Property ************************************************************
+
+     int i;
+     for(i=0;i<10;i++)
+       {
+         Messagebox.show(i.tostring());
+       }
+
+****************************************** ComBox + Forloop Property ************************************************************
+
+     private void button1_Click(object sender, EventArgs e)
+      {
+         Int32 i;
+         for (i = 0;i< 10;i++)
+           {
+              comboBox1.Items.Add(i.ToString());
+           }       
+       }
+
+****************************************** Switch Case Structure Property ************************************************************
+	int i;
+	switch(i)
+ 		case(1):
+			-------
+		break;
+		case(2):
+			-------
+		break;
+
+****************************************** Switch case + Combobox Structure Property ************************************************************
+
+       private void button1_Click(object sender, EventArgs e)
+         {
+            Int32 i = Convert.ToInt32(textBox1.Text);
+            switch (i)
+            {
+                case (1):
+                    comboBox1.Items.Add("1");
+                break;
+                case (2):
+                    comboBox1.Items.Add("2");
+                break;
+            }  
+         }
+
+****************************************** Color Dialogs Property ************************************************************
+
+      private void button1_Click(object sender, EventArgs e)
+        {
+            colorDialog1.ShowDialog();
+	    this.BackColor = colorDialog1.Color;
+        }
+
+****************************************** Folder Browser Dialogs Property ************************************************************
+
+      private void button1_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog1.ShowDialog();
+            textBox1.Text = folderBrowserDialog1.SelectedPath;
+        }
+
+
+****************************************** Font Dialogs Property ************************************************************
+
+      private void button1_Click(object sender, EventArgs e)
+        {
+            fontDialog1.ShowDialog();
+            button1.Font = fontDialog1.Font;
+            this.Font = fontDialog1.Font;
+        }
+
+******************************************  Open File Dialogs Property ************************************************************
+
+
+      private void button1_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            string a;
+            a = openFileDialog1.FileName;
+            pictureBox1.Image = Image.FromFile(a);
+        }
+
+******************************************  Save File Dialogs Property ************************************************************
+
+       private void button1_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+            string a;
+            a = saveFileDialog1.FileName;
+            textBox1.Text = a;
+        } // Filter Text File|*.txt
+
+
+******************************************* Calculator Project ********************************************************************
+
+	private void button16_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            Name_Numeric.Text = "";
+            Operator_name.Text = "";
+            Madeby.Text = "";
+
+        }
+        
+        private void zero_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + "0";
+            Madeby.Text = "";
+        }
+
+        private void one_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + "1";
+            Madeby.Text = "";
+        }
+
+        private void two_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + "2";
+            Madeby.Text = "";
+        }
+
+        private void three_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + "3";
+            Madeby.Text = "";
+        }
+
+        private void four_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + "4";
+            Madeby.Text = "";
+        }
+
+        private void five_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + "5";
+            Madeby.Text = "";
+        }
+
+        private void six_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + "6";
+            Madeby.Text = "";
+        }
+
+        private void seven_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + "7";
+            Madeby.Text = "";
+        }
+
+        private void eight_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + "8";
+            Madeby.Text = "";
+        }
+
+        private void nine_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + "9";
+            Madeby.Text = "";
+        }
+
+        private void add_Click(object sender, EventArgs e)
+        {
+            Operator_name.Text = "+";
+            if (textBox1.Text != "")
+            {
+                Name_Numeric.Text = textBox1.Text;
+            }
+            textBox1.Text = "";
+            Madeby.Text = "";
+        }
+
+        private void subtract_Click(object sender, EventArgs e)
+        {
+            Operator_name.Text = "-";
+            if (textBox1.Text != "")
+            {
+                Name_Numeric.Text = textBox1.Text;
+            }
+            textBox1.Text = "";
+            Madeby.Text = "";
+        }
+
+        private void mult_Click(object sender, EventArgs e)
+        {
+            Operator_name.Text = "*";
+            if (textBox1.Text != "")
+            {
+                Name_Numeric.Text = textBox1.Text;
+            }
+            textBox1.Text = "";
+            Madeby.Text = "";
+        }
+
+        private void percentage_Click(object sender, EventArgs e)
+        {
+            Operator_name.Text = "%";
+            if (textBox1.Text != "")
+            {
+                Name_Numeric.Text = textBox1.Text;
+            }
+            textBox1.Text = "";
+            Madeby.Text = "";
+        }
+
+        private void Equal_Click(object sender, EventArgs e)
+        {
+            double a;
+            double b;
+            double c=0;
+            double.TryParse(Name_Numeric.Text, out a);
+            double.TryParse(textBox1.Text, out b);
+
+            if (Operator_name.Text == "+")
+            {
+                c = a + b;
+            }
+            if (Operator_name.Text == "-")
+            {
+                c = a - b;
+            }
+            if (Operator_name.Text == "*")
+            {
+                c = a * b;
+            }
+            if (Operator_name.Text == "%")
+            {
+                c = a % b;
+            }
+            textBox1.Text = "RESULT= " + c.ToString();
+            Name_Numeric.Text = "";
+            Operator_name.Text = "";
+            Madeby.Text = "";
+        }
+
+        private void dot_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + ".";
+            Madeby.Text = "";
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            Madeby.Text = "Pardeep LabVIEW";
+        }
+ 
+******************************************************* Key Down Events ******************************************
+
+        private void button1_KeyDown(object sender, KeyEventArgs e)
+        {
+            this.Text = e.KeyCode.ToString();
+        }
+
+******************************************************* Key Down 2 Events ******************************************
+
+	private void button1_KeyDown(object sender, KeyEventArgs e)
+        {
+            //this.Text = e.KeyCode.ToString();
+            if(e.KeyCode == Keys.Z)
+            {
+                this.Text = e.KeyCode.ToString();
+            }
+        }
+
+******************************************************* TextBox (Enter & Leave) Events ******************************************
+
+	private void textBox1_Enter(object sender, EventArgs e)
+        {
+            textBox1.BackColor = Color.Red;
+        }
+
+        private void textBox2_Enter(object sender, EventArgs e)
+        {
+            textBox2.BackColor = Color.Yellow;
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            textBox1.BackColor = Color.White;
+        }
+
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+            textBox2.BackColor = Color.White;
+        }
+
+
+******************************************************* Button (MouseHover & MouseLeave) Events ******************************************
+
+        private void button1_MouseHover(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.Yellow;
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.LightGray;
+        }
+
+*******************************************************  Combox (ADD, Delete, Count, Find) ******************************************
+
+
+        private void add_Click(object sender, EventArgs e)
+        {
+            if(textBox3.Text == "")
+            {
+                MessageBox.Show("Please enter data");
+                return;
+            }
+            comboBox1.Items.Add(textBox3.Text);
+            comboBox2.Items.Add(textBox3.Text);
+            count.Text = comboBox1.Items.Count.ToString();
+        }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+            Int32 a;
+            a = comboBox1.SelectedIndex;
+            comboBox1.Items.RemoveAt(a);
+            count.Text = comboBox1.Items.Count.ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Int32 data;
+            data = comboBox2.FindStringExact(find.Text);
+            comboBox2.SelectedIndex = data;
+        }
+
+******************************************************* Copy & Paste Image ******************************************
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            System.IO.File.Copy("D:\\deep.png", "D:\\deep11.png", true);
+        }
+
+// Second method
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            string aa;
+            aa = openFileDialog1.FileName;
+            System.IO.File.Copy(aa, "D:\\deep22.png", true);
+
+        }
+
+******************************************************* Move Image ******************************************
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            string aa;
+            aa = openFileDialog1.FileName;
+            System.IO.File.Move(aa, "D:\\deep22.png");
+
+        }
+
+******************************************************* Delete Image ******************************************
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            string aa;
+            aa = openFileDialog1.FileName;
+            System.IO.File.Delete(aa);
+
+        }
+
+*************************************** Check the existance of a file in folder ******************************
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string aa;
+            aa = System.IO.File.Exists("D:\\plc.jpg").ToString();
+            MessageBox.Show(aa);
+        }
+
+
+*************************************** Write text file and save.txt ******************************************
+
+        private void save_Click(object sender, EventArgs e)
+        {
+            string write;
+            write = textBox4.Text;
+            System.IO.File.WriteAllText("D:\\try.txt",write);
+        }
+
+
+************************************** Read Text file ******************************************************
+
+        private void save_Click(object sender, EventArgs e)
+        {
+            openFileDialog2.ShowDialog();
+            string asd = openFileDialog2.FileName;
+            textBox4.Text = System.IO.File.ReadAllText(asd);
+        }
+
+************************************** Create Folder *******************************************************
+
+        private void save_Click(object sender, EventArgs e)
+        {
+            System.IO.Directory.CreateDirectory("D:\\Sonepar_India\\Learning_Data\\VBA_Coding\\AAA");
+        }
+// or
+
+        private void save_Click(object sender, EventArgs e)
+        {
+            System.IO.Directory.CreateDirectory("D:\\Sonepar_India\\Learning_Data\\VBA_Coding\\" + textBox4.Text);
+        }
+
+************************************ Delete Folder **********************************************************
+
+        private void Dlt_Click(object sender, EventArgs e)
+        {
+            System.IO.Directory.Delete("D:\\Sonepar_India\\Learning_Data\\VBA_Coding\\aaa");
+        }
+
+
+************************************* Change Applictaion Version *******************************************
+
+       Properties > Assembley Infomation
+
+************************************* Change Applictaion Icon *******************************************
+
+       Properties > Icon Browser
+
+************************************* MDI Multiple Document Interface *******************************************
+
+example :- Form1, Form2 ... n
+
+        private void Form2_Click(object sender, EventArgs e)
+        {
+            Form2 deep = new Form2();
+            deep.Show();
+        }
+
+        private void Form3_Click(object sender, EventArgs e)
+        {
+            Form3 deep1 = new Form3();
+            deep1.Show();
+	   // deep1.Showdialog();
+        }
+
+******************************* MDI Multiple form in Parent *******************************************************
+
+// Main for you need to true :- IsMDIContainer
+
+        private void Form2_Click(object sender, EventArgs e)
+        {
+            Form2 deep = new Form2();
+            deep.MdiParent = this;
+            deep.Show();
+        }
+
+        private void Form3_Click(object sender, EventArgs e)
+        {
+            Form3 deep1 = new Form3();
+            deep1.MdiParent = this;
+            deep1.Show();
+        }
+
+*********************************  Change Child Form property from Parent Form MDI **********************************
+
+        private void Form2_Click(object sender, EventArgs e)
+        {
+            Form2 deep = new Form2();
+            deep.MdiParent = this;
+            deep.BackColor = Color.YellowGreen;
+            deep.MaximizeBox = false;
+            deep.Show();
+        }
+
+****************************** Change control property in Child form within Parent Form ****************************
+
+Change Modifier Property of Child control(like Text, label etc) :- Private to Public
+
+         private void Form2_Click(object sender, EventArgs e)
+        {
+            Form2 deep = new Form2();
+            deep.MdiParent = this;
+            deep.form2text1.Text = "1000";
+            deep.Show();
+        }
+
+******************************** Add Form Inside Folder (TUT1 > myforms >)****************************************************************
+
+        private void FORM4_Click(object sender, EventArgs e)
+        {
+            TUT1.myforms.Form4 P = new TUT1.myforms.Form4();
+            P.MdiParent = this;
+            P.Show();
+        }
+
+************************************** Phone Book Project ******************************************************************************
+
+//_____________________Form1__________________________________
+private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            Regestor p = new Regestor();
+            p.MdiParent = this;
+            p.Show();
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            Search p1 = new Search();
+            p1.MdiParent = this;
+            p1.Show();
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            this.process1.StartInfo.FileName = "C:\\Windows\\System32\\calc.exe";
+            process1.Start();
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            About_form p2 = new About_form();
+            p2.MdiParent = this;
+            p2.Show();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+//_____________________________________ Regestor Form ____________________________________________
+private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            New_butt.Enabled = false;
+            Save_butt.Enabled = true;
+            groupBox1.Enabled = true;
+            // Text clear ------
+            id_textBox1.ResetText();
+            fn_textBox2.ResetText();
+            ln_textBox3.ResetText();
+            cn_textBox4.ResetText();
+            ei_textBox5.ResetText();
+            //-----------------
+           
+        }
+
+        private void Save_butt_Click(object sender, EventArgs e)
+        {
+            if(id_textBox1.Text == "")
+            {
+                MessageBox.Show("Please Enter ID:- ?");
+                return;
+            }
+            New_butt.Enabled = true;
+            Save_butt.Enabled = false;
+            groupBox1.Enabled = false;
+            //--------------- Save data in Text File --------------
+            String a = "D:\\";
+
+            //----------------Directory where save file-----------------------------------
+            Folder_textBox1.Text = a;
+            //---------------------------------------------------
+            String b = a + id_textBox1.Text + "_First Name.txt";
+            if (System.IO.File.Exists(b) == true)
+            {
+                MessageBox.Show("This ID Data Already Exist...");
+                return;
+            }
+            System.IO.File.WriteAllText(b, fn_textBox2.Text, Encoding.UTF8);
+
+
+            String c = a + id_textBox1.Text + "_Last Name.txt";
+            if (System.IO.File.Exists(c) == true)
+            {
+                MessageBox.Show("This ID Data Already Exist...");
+                return;
+            }
+            System.IO.File.WriteAllText(c, ln_textBox3.Text, Encoding.UTF8);
+
+
+            String d = a + id_textBox1.Text + "_Phone Number.txt";
+            if (System.IO.File.Exists(d) == true)
+            {
+                MessageBox.Show("This ID Data Already Exist...");
+                return;
+            }
+            System.IO.File.WriteAllText(d, cn_textBox4.Text, Encoding.UTF8);
+
+
+            String f = a + id_textBox1.Text + "_Email ID.txt";
+            if (System.IO.File.Exists(f) == true)
+            {
+                MessageBox.Show("This ID Data Already Exist...");
+                return;
+            }
+            System.IO.File.WriteAllText(f, ei_textBox5.Text, Encoding.UTF8);
+            MessageBox.Show("Data Save");
+            //-------------------------------------------------------------
+        }
+
+//_______________________________________Search_Form_______________________________________
+
+      private void Search_button1_Click(object sender, EventArgs e)
+        {
+            String a = "D:\\Sonepar_India\\Learning_Data\\VBA_Coding\\";
+
+            String b = a + Search_textBox1.Text + "_First Name.txt";
+            string read1 = System.IO.File.ReadAllText(b, Encoding.UTF8);
+            fn_textBox2.Text = read1;
+
+            String d = a + Search_textBox1.Text + "_Last Name.txt";
+            String read2 = System.IO.File.ReadAllText(d, Encoding.UTF8);
+            ln_textBox3.Text = read2;
+
+            String f = a + Search_textBox1.Text + "_Phone Number.txt";
+            String read3 = System.IO.File.ReadAllText(f, Encoding.UTF8);
+            cn_textBox4.Text = read3; 
+
+            String g = a + Search_textBox1.Text + "_Email ID.txt";
+            String read4 = System.IO.File.ReadAllText(g, Encoding.UTF8);
+            ei_textBox5.Text = read4;
+        }
+
+//_____________________________________________________________________________________________________________
+
+
+//***************************************** Windows Media player **********************************************
+
+	private void button1_Click(object sender, EventArgs e)
+        {
+            axWindowsMediaPlayer1.URL = "D:\\Sonepar_India\\Learning_Data\\VBA_Coding\\Notaan Wali Dhauns Simiran Kaur Dhadli_HD_720p-(Hd9video).mp4";
+        }
+
+        private void Play_Click(object sender, EventArgs e)
+        {
+            axWindowsMediaPlayer1.Ctlcontrols.play();
+        }
+
+        private void Pause_Click(object sender, EventArgs e)
+        {
+            axWindowsMediaPlayer1.Ctlcontrols.pause();
+        }
+
+        private void Stop_Click(object sender, EventArgs e)
+        {
+            axWindowsMediaPlayer1.Ctlcontrols.stop();
+        }
+
+//************************************** Dock Property**********************************************
+
+Create panel and select there Dock property.
+
+//************************************** Application Startup Path **********************************
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = Application.StartupPath;
+        }
+
+//**************************************** Run other Run file(Calculator.exe) in C# ****************
+
+//Right clik on project add "Exesting iteam" select ".exe" file any
+// right click on .exe file > properties > Copy to output > Always
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string p;
+            textBox1.Text = Application.StartupPath + "\\calc.exe";
+            process1.StartInfo.FileName = textBox1.Text;
+            
+            if (System.IO.File.Exists(textBox1.Text)==true)
+            {
+                process1.Start();
+            }
+            else
+            {
+                MessageBox.Show("Soory not found");
+            }
+        }
+
+//***************************************** Dock and Anchor properties**************************************
+
+// these properties use for bindings (Left, Right, Top and Bottom)
+
+
+//********************************************Form size change W & H ***************************************
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Size = new Size(700, 451);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Size = new Size(550, 451);
+        }
+
+//********************************************** Change Size of Control :-Image Zoom in and Zoom Out *********************************
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Size = new Size(pictureBox1.Size.Width + 10, pictureBox1.Size.Height+10);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            pictureBox1.Size = new Size(pictureBox1.Size.Width - 10, pictureBox1.Size.Height - 10);
+
+        }
+
+//************************************************* Chnage Location of Control :-*********************************************************
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Location = new Point(pictureBox1.Location.X + 10, pictureBox1.Location.Y);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            pictureBox1.Location = new Point(pictureBox1.Location.X - 10, pictureBox1.Location.Y);
+
+        }
+
+//******************************************** Mouse Move Controls ****************************************************
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.Text = e.X.ToString() + ":" + e.Y.ToString();
+            pictureBox1.Location = new Point(e.X, e.Y);
+        }
+
+//**********************************************999,99,*****************************************
+
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            Int64 pardeep;
+            Int64.TryParse(textBox1.Text, out pardeep);
+            textBox2.Text = pardeep.ToString("#,#");
+        }
+
+//******************************************** Window Minimized ************************
+
+Windowstate = formwindowstate.minimized;
+
+//********************************************* Diary Application ***********************
+
+        private void Clos_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Min_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+            combox();
+            Media_combo();
+            Int32 Music_prevoius;
+            Music_prevoius = TUT2.Properties.Settings.Default.save_Music;
+            musicsave(Music_prevoius);
+            Int32 image_prevoius;
+            image_prevoius = TUT2.Properties.Settings.Default.save_image;
+            imageloder(image_prevoius);
+        }
+        private void combox()
+
+        {
+            for (int i = 1; i <=3 ; i++)
+            {
+                comboBox1.Items.Add(i.ToString());
+            }
+        }
+
+        private void imageloder(Int32 combox_index)
+        {
+            String f;
+            combox_index = combox_index + 1;
+            f = Application.StartupPath + "\\data\\Pics\\"+ combox_index.ToString() +".jpg";
+            this.BackgroundImage = Image.FromFile(f);
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Int32 p;
+            p = comboBox1.SelectedIndex;
+            imageloder(p);
+            TUT2.Properties.Settings.Default.save_image = this.comboBox1.SelectedIndex;
+            TUT2.Properties.Settings.Default.Save();
+        }
+
+        private void Media_combo()
+
+        {
+            for ( int bb = 1; bb <= 2; bb++)
+            {
+                comboBox2.Items.Add(bb.ToString());
+            }
+        }
+
+        private void media(Int32 Combox2_index)
+        {
+            
+            String p;
+            Combox2_index = Combox2_index + 1;
+            p = Application.StartupPath + "\\data\\Music\\" + Combox2_index.ToString() + ".mp3";
+            axWindowsMediaPlayer1.URL = p;
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Load_Click(object sender, EventArgs e)
+        {
+            
+            
+        }
+
+        private void musicload_Click(object sender, EventArgs e)
+        {
+            media(comboBox2.SelectedIndex);
+            TUT2.Properties.Settings.Default.save_Music = this.comboBox2.SelectedIndex;
+            TUT2.Properties.Settings.Default.Save();
+        }
+
+        private void musicsave(Int32 data1)
+        {
+            comboBox2.SelectedIndex = data1;
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            TUT2.About about = new About();
+            about.MdiParent = this;
+            about.Show();
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            TUT2.Video_see v = new Video_see();
+            v.Show();
+        }
+
+//__________________________________About form (Save image, load image)___________________
+
+        private void Image_Select_Click(object sender, EventArgs e)
+        {
+            this.openFileDialog1.ShowDialog();
+            string ap;
+            ap = openFileDialog1.FileName;
+            pictureBox1.Load(ap);
+
+        }
+
+        private void Save_image_Click(object sender, EventArgs e)
+        {
+            String lo = openFileDialog1.FileName;
+            String qw = Application.StartupPath + "\\data\\Image\\1.jpg";
+            System.IO.File.Copy(lo, qw, true);
+        }
+
+        private void About_Load(object sender, EventArgs e)
+        {
+            String qw = Application.StartupPath + "\\data\\Image\\1.jpg";
+            pictureBox1.Load(qw); 
+        }
+
+//____________________________Video_see _______________________________________
+
+        private void Play_video_Click(object sender, EventArgs e)
+        {
+            
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            String vb;
+            vb = Application.StartupPath + "\\data\\Video\\1.mp4";
+            axWindowsMediaPlayer1.URL = vb;
+        }
+//********************************** Context Menu Strip (Lock Screen)
+//select main form "Context Menu Strip
+
+//********************************* Tool Tips Text ********************************************
+
+Go select button and "Enter any tool tips for indication
+
+//************************** RTF File RichTextBox for enter any text and save file *************
+106-115 pending
+
+//************************** Array List [Read write] *******************************************
+
+	private void button3_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add("oo");
+            listBox1.Items.Add("oo");
+            listBox1.Items.Add("oo");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            String[] arraydata = { "Pardeep","Deep","Labview"};
+            listBox1.Items.AddRange(arraydata);
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            String[] arraydata = { "Pardeep","Deep","Labview"};
+            arraydata[1] = "nonono";
+            listBox1.Items.AddRange(arraydata);
+        }
+
+
+//************************* Arrya part 2 (For loop) ********************************************
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string[] arraydata = { "Pardeep", "jass", "don", "deep" };
+            int i;
+            for(i=0;i<arraydata.Length;i++)
+            {
+                string p = arraydata[i];
+                listBox1.Items.Add(p);           
+            }
+        }
+//**************************** Array part 2 (foreach) ******************************************
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string[] arraydata = { "Pardeep", "jass", "don", "deep" };
+            int i;
+            foreach(string item in arraydata)
+            {
+                listBox1.Items.Add(item);
+            }
+        }
+
+//******************************* Array pending ************************************************
+//119 - 131
+
+//********************************* Window Registry pending ************************************
+//132 - 143
+
+//********************************** SQL *******************************************************
+
+
+add new folder-> add form :> "datasets"..............right click on window select "addadapter" and select your database.
+
+
+view-> otherwindows:> data sources
+Select :> data grid view....and drag on your form......automatic table created.
+Select :> details.... and drag on your form ........automatic columns created for view and add.
+
+//********************************** Stmulsoft *************************************************
+
+download and install
+framework.net select 4.5.2
+add "mytool"....add Stimulsoft.report.dll (C:\Program Files (x86)\Stimulsoft Designer 2021.4.1\ Stimulsoft.report.dll)
+add references :- Stimulsoft.report.win
+
+ 	private void button1_Click(object sender, EventArgs e)
+        {
+            this.stiReport1.Show();
+        }
+
+_______________________Stireport Designer __________________________________
+
+Create simple application and save in your drive like c,d....etc.
+
+open in C#
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.stiReport1.Load("D:\\Reportsti.mrt");
+            this.stiReport1.Show();
+        }
+
+________________ Startup path ____________
+	private void button1_Click(object sender, EventArgs e)
+        {
+            String p;
+            p = Application.StartupPath;
+            p = p + "\\Data\\rep\\Reportsti.mrt";
+            this.stiReport1.Load(p);
+            this.stiReport1.Show();
+        }
+
+//******************************************** Reporting in C# by Stimulsoft **********************
+
+164-178
+
+//****************************************** SAP Crystal Report ************************************
+
+179 - 189
+
+//******************************************* Bar code scanner *************************************
+
+
+//******************************************* Excel to SQL *****************************************
+
+
+//******************************************** LINQ and Multithreading in C#***********************
+
+
+//******************************************** Nuget and Components ******************************
+
+
+//******************************************** Zip File in C# Apps ********************************
+
+// Design Modern GUI Apps
+
+// Multi Language Apps
+
+// WPF in C# for Beginners
+
+// Postgres
+
+// PostgresSQL in C#
+
+// MSQL
+
+// MSQL in C#
+
+// Save Image in SQL
+
+// Searching MYSQL - Searching MYSQL Data
+
+// Dictonary in C#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

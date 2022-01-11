@@ -1,0 +1,157 @@
+'****************************************************Modifyed Program ControlLogix and CompactLogix**********************************
+
+Imports System.Data.SqlClient
+Imports System.Threading
+Public Class MainForm
+
+    '*******************************************************************************
+    '* Stop polling when the form is not visible in order to reduce communications
+    '* Copy this section of code to every new form created
+    '*******************************************************************************
+    Private NotFirstShow As Boolean
+
+    Private Sub Form_VisibleChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.VisibleChanged
+        '* Do not start comms on first show in case it was set to disable in design mode
+        If NotFirstShow Then
+            AdvancedHMIDrivers.Utilities.StopComsOnHidden(components, Me)
+        Else
+            NotFirstShow = True
+        End If
+    End Sub
+
+    '***************************************************************
+    '* .NET does not close hidden forms, so do it here
+    '* to make sure forms are disposed and drivers close
+    '***************************************************************
+    Private Sub MainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Dim index As Integer
+        While index < My.Application.OpenForms.Count
+            If My.Application.OpenForms(index) IsNot Me Then
+                My.Application.OpenForms(index).Close()
+            End If
+            index += 1
+        End While
+
+
+    End Sub
+
+    ' Public Sub Activate_Click(sender As Object, e As EventArgs) Handles Activate.Click
+    'Dim a As Integer = 1
+    'While a < 5
+    'Trigger_new.Text = Conversion.Int(EthernetIPforCLXCom1.Read("Trigger"))
+    ' lbldata1.Text = Conversion.Int(EthernetIPforCLXCom1.Read("Data1_timer.ACC"))
+    ' Counter1.Text = Conversion.Int(EthernetIPforCLXCom1.Read("Counter_1.ACC"))
+
+    'date1.Text = Date.Now
+    'If Trigger_new.Text = 1 Then
+    'Thread.Sleep(1000)
+    'Dim con As New SqlConnection("Data Source=INLT6K50YQ2\DEEPSQLEXPRESS;Initial Catalog=VBASQLPLC;Integrated Security=True")
+    'Dim cmd As New Data.SqlClient.SqlCommand
+    'cmd.CommandType = System.Data.CommandType.Text
+    ' cmd.CommandText = "Insert into Datamachine (Data_1,Data_2,Data_3) values('" & lbldata1.Text & "','" & Counter1.Text & "','" & date1.Text & "')"
+    ' cmd.Connection = con
+    ' con.Open()
+    ' cmd.ExecuteNonQuery()
+    ' Counter1.Text = Conversion.Int(EthernetIPforCLXCom1.Write("Trigger", 0))
+
+    'Else
+    'End If
+    'End While
+    'End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Pardeep()
+    End Sub
+
+    Private Sub Pardeep()
+
+        Trigger_new.Text = Conversion.Int(EthernetIPforCLXCom1.Read("Trigger"))
+        Trigger_New_1.Text = Conversion.Int(EthernetIPforCLXCom1.Read("Trigger1"))
+
+        If Trigger_new.Text = 1 Then
+            Pardeep_database_1()                                 'Thread.Sleep(1000)
+        ElseIf Trigger_New_1.Text = 1 Then
+            Pardeep_database_2()
+        ElseIf Trigger_new.Text = 1 And Trigger_New_1.Text = 1 Then
+            Pardeep_database_1()
+            Pardeep_database_2()
+            'MessageBox.Show("ok")
+        Else
+        End If
+    End Sub
+
+    Private Sub Pardeep_database_1()
+        date1.Text = DateAndTime.Now
+        lbldata1.Text = Conversion.Int(EthernetIPforCLXCom1.Read("Data1_timer.ACC"))
+
+        Counter1.Text = Conversion.Int(EthernetIPforCLXCom1.Read("Counter_1.ACC"))
+        Add2.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[0]"))
+        Add3.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[1]"))
+        Add4.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[2]"))
+        Add5.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[3]"))
+        Add6.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[4]"))
+        Add7.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[5]"))
+        Add8.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[6]"))
+        Add9.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[7]"))
+        Add10.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[8]"))
+        Add11.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[9]"))
+        Add12.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[10]"))
+        Add13.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[11]"))
+        Add14.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[12]"))
+        Add15.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[13]"))
+        Add16.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[14]"))
+        Add17.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[15]"))
+        Add18.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[16]"))
+
+        Dim con As New SqlConnection("Data Source=INLT6K50YQ2\DEEPSQLEXPRESS;Initial Catalog=VBASQLPLC;Integrated Security=True")
+        Dim cmd As New Data.SqlClient.SqlCommand
+        cmd.CommandType = System.Data.CommandType.Text
+        cmd.CommandText = "Insert into MachineData1 (Date_1,Trigger_1,Timer_1, Counter_1,D1,D2,D3,D4,D5,D6,D7,D8,D9,D10,D11,D12,D13,D14,D15,D16,D17)
+            values('" & date1.Text & "','" & Trigger_new.Text & "','" & lbldata1.Text & "', '" & Counter1.Text & "','" & Add2.Text & "'
+            ,'" & Add3.Text & "','" & Add4.Text & "','" & Add5.Text & "','" & Add6.Text & "','" & Add7.Text & "','" & Add8.Text & "'
+            ,'" & Add9.Text & "','" & Add10.Text & "','" & Add11.Text & "','" & Add12.Text & "','" & Add13.Text & "','" & Add14.Text & "'
+            ,'" & Add15.Text & "','" & Add16.Text & "','" & Add17.Text & "','" & Add18.Text & "')"
+        cmd.Connection = con
+        con.Open()
+        cmd.ExecuteNonQuery()
+        Trigger_new.Text = Conversion.Int(EthernetIPforCLXCom1.Write("Trigger", 0))
+    End Sub
+
+
+    Private Sub Pardeep_database_2()
+        date1.Text = DateAndTime.Now
+
+        Add1.Text = Conversion.Int(EthernetIPforCLXCom1.Read("Data2_timer.ACC"))
+        Counter2.Text = Conversion.Int(EthernetIPforCLXCom1.Read("Counter_2.ACC"))
+        Add19.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[17]"))
+        Add20.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[18]"))
+        Add21.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[19]"))
+        Add22.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[20]"))
+        Add23.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[21]"))
+        Add24.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[22]"))
+        Add25.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[23]"))
+        Add26.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[24]"))
+        Add27.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[25]"))
+        S0.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[26]"))
+        S1.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[27]"))
+        S2.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[28]"))
+        S3.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[29]"))
+        S4.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[30]"))
+        S5.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[31]"))
+        S6.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[32]"))
+        S7.Text = Conversion.Int(EthernetIPforCLXCom1.Read("adddata_1[33]"))
+
+        Dim con As New SqlConnection("Data Source=INLT6K50YQ2\DEEPSQLEXPRESS;Initial Catalog=VBASQLPLC1;Integrated Security=True")
+        Dim cmd As New Data.SqlClient.SqlCommand
+        cmd.CommandType = System.Data.CommandType.Text
+        cmd.CommandText = "Insert into MachineData2 (Date_2,Trigger_2,Timer_2,Counter_2,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14,P15,P16,P17)
+            values('" & date1.Text & "','" & Trigger_New_1.Text & "','" & Add1.Text & "', '" & Counter2.Text & "','" & Add19.Text & "'
+            ,'" & Add20.Text & "','" & Add21.Text & "','" & Add22.Text & "','" & Add23.Text & "','" & Add24.Text & "','" & Add25.Text & "'
+            ,'" & Add26.Text & "','" & Add27.Text & "','" & S0.Text & "','" & S1.Text & "','" & S2.Text & "','" & S3.Text & "','" & S4.Text & "'
+            ,'" & S5.Text & "','" & S6.Text & "','" & S7.Text & "')"
+        cmd.Connection = con
+        con.Open()
+        cmd.ExecuteNonQuery()
+        Trigger_New_1.Text = Conversion.Int(EthernetIPforCLXCom1.Write("Trigger1", 0))
+    End Sub
+End Class

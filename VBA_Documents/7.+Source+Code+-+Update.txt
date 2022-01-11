@@ -1,0 +1,70 @@
+Source Code (Update Record)
+--------------------------------------------------------
+
+Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click 
+'Check Blank Name 
+If txtName.Text.Length = 0 Then 
+	MessageBox.Show("Blank Employee Name Not Allowed.") 
+	Return 
+End If 
+
+Dim strQuery As String 
+Dim connection As SqlConnection 
+Dim command As SqlCommand 
+'Dim strConString As String 
+
+'Insert Record........................... 
+If isAdding = True Then 
+	'Check Duplicate ............... 
+	ChkDup() 
+
+	If isDup = True Then 
+		MessageBox.Show("Employee Name Already Exists!") 
+		isDup = False 
+		Return 
+	End If 
+	
+	strQuery = "INSERT INTO Employee (emp_Name, salary, dob, phone)" & _
+	 "VALUES('" & txtName.Text & "'," & Decimal.Parse(txtSalary.Text) & _
+	 ",'" & dtpDOB.Value.ToShortDateString() & "','" & txtPhone.Text & "')" 
+	
+	'strConString = "Data Source=DELL-6320;Initial Catalog=Company;User ID=User1;Password=data" 
+	connection = New SqlConnection(strConString) 
+	command = New SqlCommand(strQuery, connection) 
+	command.CommandType = CommandType.Text 
+	connection.Open() 
+	command.ExecuteNonQuery() 
+	connection.Close() 
+	
+	MessageBox.Show("Record Added Successfully.") 
+
+Else 'EDITING EDITING 
+
+	strQuery = "UPDATE Employee SET Phone='" & txtPhone.Text & "', Salary=" & _
+	 Decimal.Parse(txtSalary.Text) & _
+	 ", DOB='" & dtpDOB.Value.ToShortDateString() & _
+	 "' WHERE emp_Name='" & txtName.Text & "'" 
+	
+	connection = New SqlConnection(strConString) 
+	command = New SqlCommand(strQuery, connection) 
+	command.CommandType = CommandType.Text 
+	connection.Open() 
+	command.ExecuteNonQuery() 
+	connection.Close() 
+
+	MessageBox.Show("Record Updated Successfully.") 
+End If 
+
+txtName.Enabled = True 
+
+'Enable / Disable Buttons ................. 
+GroupBox1.Enabled = False 
+btnAdd.Enabled = True 
+btnEdit.Enabled = True 
+btnDelete.Enabled = True 
+btnQuit.Enabled = True 
+btnFind.Enabled = True 
+btnSave.Enabled = False 
+btnCancel.Enabled = False 
+
+End Sub

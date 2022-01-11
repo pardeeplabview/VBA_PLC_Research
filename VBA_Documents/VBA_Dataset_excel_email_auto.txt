@@ -1,0 +1,89 @@
+Imports System.Net.Mail
+Imports ClosedXML.Excel
+Imports DocumentFormat.OpenXml.Spreadsheet
+
+Public Class Form1
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Try
+            Dim mail As New MailMessage
+            Dim stmpServer As New SmtpClient("smtp.gmail.com")
+            mail.From = New MailAddress(TextBox1.Text)
+            mail.To.Add(TextBox3.Text)
+            mail.Subject = TextBox4.Text
+            mail.Body = TextBox5.Text
+
+            Dim attach As System.Net.Mail.Attachment
+            attach = New System.Net.Mail.Attachment(TextBox6.Text)
+            mail.Attachments.Add(attach)
+            stmpServer.Port = 587
+            stmpServer.Credentials = New System.Net.NetworkCredential(TextBox1.Text, TextBox2.Text)
+            stmpServer.EnableSsl = True
+            stmpServer.Send(mail)
+            MessageBox.Show("done")
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        OpenFileDialog1.ShowDialog()
+        TextBox6.Text = OpenFileDialog1.FileName
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'VBASQLPLCDataSet.MachineData1' table. You can move, or remove it, as needed.
+        Me.MachineData1TableAdapter.Fill(Me.VBASQLPLCDataSet.MachineData1)
+
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        'Using sfd As SaveFileDialog = New SaveFileDialog() With {.Filter = "Excel Workbook|*.xlsx"}
+        '    My.Computer.FileSystem.WriteAllText("D:\\dp.csv", "" & TextBox1.Text, True)
+        '    If sfd.ShowDialog() = DialogResult.OK Then
+        Try
+            Using workbook As XLWorkbook = New XLWorkbook()
+                workbook.Worksheets.Add(Me.VBASQLPLCDataSet.MachineData1.CopyToDataTable(), "MachineData1")
+                workbook.SaveAs("D:\\dpqwe.xlsx")
+            End Using
+            MessageBox.Show("You successfully")
+                Catch ex As Exception
+                    MessageBox.Show("Error")
+                End Try
+        '    End If
+        'End Using
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+
+
+
+        TextBox7.Text = DateAndTime.Now.ToString("HH")
+        TextBox8.Text = DateAndTime.Now.ToString("mm")
+        TextBox9.Text = DateAndTime.Now.ToString("ss")
+
+        If (TextBox7.Text = Hours_t.Text And TextBox8.Text = Mint_t.Text And TextBox9.Text = Sec_t.Text) Then
+
+
+            Dim mail As New MailMessage
+            Dim stmpServer As New SmtpClient("smtp.gmail.com")
+            mail.From = New MailAddress("automation9211@gmail.com")
+            mail.To.Add(TextBox3.Text)
+            mail.Subject = TextBox4.Text
+            mail.Body = TextBox5.Text
+
+            Dim attach As System.Net.Mail.Attachment
+            attach = New System.Net.Mail.Attachment(TextBox6.Text)
+            mail.Attachments.Add(attach)
+            stmpServer.Port = 587
+            stmpServer.Credentials = New System.Net.NetworkCredential("automation9211@gmail.com", "Pardeep1234")
+            stmpServer.EnableSsl = True
+            stmpServer.Send(mail)
+            MessageBox.Show("done")
+        End If
+    End Sub
+End Class

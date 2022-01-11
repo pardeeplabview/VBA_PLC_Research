@@ -1,0 +1,24 @@
+Source Code (Delete Record)
+--------------------------------------------------------
+
+Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click 
+	If MessageBox.Show("Delete the Record(Y/N)", "Delete", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then 
+		Dim strQuery As String 
+		Dim connection As SqlConnection 
+		Dim command As SqlCommand 
+		strQuery = "DELETE FROM Employee WHERE Emp_Name='" & txtName.Text.Trim() & "'" 
+		connection = New SqlConnection(strConString) 
+		command = New SqlCommand(strQuery, connection) 
+		command.CommandType = CommandType.Text 
+		connection.Open() 
+		command.ExecuteNonQuery() 
+		connection.Close() 
+		
+		MessageBox.Show("Record has been Deleted.") 
+
+		txtName.Text = "" 
+		txtPhone.Text = "" 
+		txtSalary.Text = "" 
+		dtpDOB.Text = Today 
+	End If 
+End Sub

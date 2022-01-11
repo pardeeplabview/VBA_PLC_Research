@@ -1,0 +1,33 @@
+Public Class Form1
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Try
+            Dim mail As New MailMessage
+            Dim stmpServer As New SmtpClient("smtp.gmail.com")
+            mail.From = New MailAddress(TextBox1.Text)
+            mail.To.Add(TextBox3.Text)
+            mail.Subject = TextBox4.Text
+            mail.Body = TextBox5.Text
+
+            Dim attach As System.Net.Mail.Attachment
+            attach = New System.Net.Mail.Attachment(TextBox6.Text)
+            mail.Attachments.Add(attach)
+            stmpServer.Port = 587
+            stmpServer.Credentials = New System.Net.NetworkCredential(TextBox1.Text, TextBox2.Text)
+            stmpServer.EnableSsl = True
+            stmpServer.Send(mail)
+            MessageBox.Show("done")
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        OpenFileDialog1.ShowDialog()
+        TextBox6.Text = OpenFileDialog1.FileName
+    End Sub
+End Class

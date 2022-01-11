@@ -1,0 +1,48 @@
+Source Code (Interface)
+-----------------------------------------------------------
+Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click 
+	'Enable/Disable Buttons 
+	GroupBox1.Enabled = True 
+	btnAdd.Enabled = False 
+	btnEdit.Enabled = False 
+	btnDelete.Enabled = False 
+	btnQuit.Enabled = False 
+	btnFind.Enabled = False 
+	btnSave.Enabled = True 
+	btnCancel.Enabled = True 
+End Sub 
+
+Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click 
+	GroupBox1.Enabled = True 
+	btnAdd.Enabled = False 
+	btnEdit.Enabled = False 
+	btnDelete.Enabled = False 
+	btnQuit.Enabled = False 
+	btnFind.Enabled = False 
+	btnSave.Enabled = True 
+	btnCancel.Enabled = True 
+End Sub
+
+Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click 
+	'Enable / Disable Buttons 
+	GroupBox1.Enabled = False 
+	btnAdd.Enabled = True 
+	btnEdit.Enabled = True 
+	btnDelete.Enabled = True 
+	btnQuit.Enabled = True 
+	btnFind.Enabled = True 
+	btnSave.Enabled = False 
+	btnCancel.Enabled = False 
+End Sub
+
+Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+	GroupBox1.Enabled = False 
+	btnAdd.Enabled = True 
+	btnEdit.Enabled = True 
+	btnDelete.Enabled = True 
+	btnQuit.Enabled = True 
+	btnFind.Enabled = True
+	btnSave.Enabled = False
+	btnCancel.Enabled = False
+End Sub
+

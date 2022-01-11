@@ -1,0 +1,26 @@
+Source Code (Find Record)
+--------------------------------------------------------
+
+Private Sub btnFind_Click(sender As Object, e As EventArgs) Handles btnFind.Click 
+	Dim strQuery As String 
+	Dim conDup As SqlConnection 
+	Dim cmdDup As SqlCommand 
+	Dim reader As SqlDataReader 
+	strQuery = "SELECT * FROM Employee WHERE Emp_Name LIKE'" & txtFind.Text.Trim & "%'" 
+	conDup = New SqlConnection(strConString) 
+	cmdDup = New SqlCommand(strQuery, conDup) 
+	conDup.Open() 
+	reader = cmdDup.ExecuteReader() 
+
+	If reader.Read() Then 
+		txtName.Text = reader("emp_Name").ToString() 
+		txtSalary.Text = reader("Salary").ToString() 
+		txtPhone.Text = reader("Phone").ToString() 
+		dtpDOB.Text = reader("DOB").ToString() 
+	Else 
+		MessageBox.Show("Record Not Found!") 
+	End If 
+
+	reader.Close() 
+	conDup.Close() 
+End Sub
